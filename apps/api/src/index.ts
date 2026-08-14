@@ -1,7 +1,7 @@
 import { Hono } from "hono"
 import { cors } from "hono/cors"
 import { clerkMiddleware } from "@clerk/hono"
-import test from "./modules/test"
+import chat from "./routes/chat"
 
 
 const app = new Hono<{ Bindings: CloudflareBindings }>()
@@ -18,6 +18,6 @@ const app = new Hono<{ Bindings: CloudflareBindings }>()
     })(c, next)
   )
 
-const routes = app.route("/test",test)
+const routes = app.route("/api/chat",chat)
 export type AppType = typeof routes
 export default app
